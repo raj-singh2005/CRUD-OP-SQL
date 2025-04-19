@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All Users</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table ,td,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1 id="heading">USER'S LIST</h1> 
+        <form method="get" action="/">
+            <button id="allUser">HOME</button>
+        </form>
+    </div>
+  <div class="userlist">  
+    
+    <table>
+        <tr>
+            <th class="TH">Id</th>
+            <th class="TH">Username</th>
+            <th class="TH">Email</th>
+        </tr>
+         <% for(user of result){  %>
+              <tr>
+                <td id="table-id"><%= user.id %> </td>
+                <td id="table-username"><%= user.username %> </td>
+                <td id="table-email"><%= user.email %> </td>
+               <td class="table-edit"> <form method="GET" action="/user/<%=user.id%>/edit">
+                    <button id="edit-btn">Edit Username!</button>
+                </form> </td>
+                <td class="table-delete">
+                    <form method="get" action="/user/<%= user.id %>/delete">
+                        <button id="delete-btn">Delete User</button>
+                    </form>
+                </td>
+              </tr>
+         <% } %>
+    </table>
+   
+    </div>
+</body>
+</html>
